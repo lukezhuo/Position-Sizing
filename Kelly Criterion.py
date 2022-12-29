@@ -42,7 +42,7 @@ ev_per_step = (payout * win_percentage - loss * (1 - win_percentage)) * bet
 busts = 0
 losses = 0
 for t in range(trials):
-    deltas = np.random.binomial(1, win_percentage, steps)
+    deltas = np.random.binomial(1, win_percentage, steps) / 1 * payout - 0.5
     prices, result = produce_prices(deltas)
     if len(prices) == 0:
         busts += 1
@@ -53,7 +53,7 @@ for t in range(trials):
 st.pyplot(plt.show())
 st.write("Number of busts: " + str(busts) + ", Number of losses: " + str(losses) + " (in " + str(trials) + " trials)")
 
-deltas = np.random.binomial(1, win_percentage, steps)
+deltas = np.random.binomial(1, win_percentage, steps) / 1 * payout - 0.5
 
 
 # prices = produce_prices()[0]
